@@ -7,15 +7,16 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
 
   const navigate = useNavigate();
-  const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth);//recebe os dados de usuário atual
 
   useEffect(() => {
-    if(!user)navigate('/login');
+    if(!user)navigate('/login');//caso não haja usuário, redireciona para a pag de login
   }, []);
 
   return (
     <div>
-      Home
+      <h1>Welcome {user?.displayName}!</h1>
+      <span>Your is is {user?.uid}</span>
     </div>
   );
 };
