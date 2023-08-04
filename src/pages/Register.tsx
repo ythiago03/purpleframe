@@ -1,38 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';//função para criar user com email e senha
 import { auth } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'
 
 const Register = () => {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().required().min(6).max(20),
+    confirmPassword: yup.string().oneOf([yup.ref("password"), null]).required(),
+  });
+
+  const {register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const navigate = useNavigate();
 
-  const createAcount = async () => {
+  const createAcount = async ({email, password}) => {
     const result = await createUserWithEmailAndPassword(auth, email, password);//criando novo user
     console.log(result);
     navigate('/login');
   };
 
+  const onSubmit = data => createAcount(data);
+ 
   return (
-    <div>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <h1>Register</h1>
       <input 
         type="email" 
-        name="email" 
         placeholder="Your email..." 
-        onChange={e => setEmail(e.target.value)}
+        {...register('email')}
       />
       <input 
         type="password" 
-        name="password" 
         placeholder="Your password..." 
-        onChange={e => setPassword(e.target.value)}
+        {...register('password')}
       />
-      <button onClick={createAcount}>Create acount</button>
-    </div>
+      <input 
+        type="password" 
+        placeholder="Confirm your password..." 
+        {...register('confirmPassword')}
+      />
+      <input type="submit"/>
+    </form>
   );
 };
 
