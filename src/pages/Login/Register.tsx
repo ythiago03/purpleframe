@@ -1,6 +1,6 @@
 import React from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';//função para criar user com email e senha
-import { auth } from '../config/firebase';
+import { auth } from '../../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
