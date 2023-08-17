@@ -5,11 +5,14 @@
   padding: 0;
   box-sizing: border-box;
   border: none;
-  text-decoration: none;
 }
 
 body{
   width: 100%;
   height: 100%;
   font-family: 'Inter', sans-serif;
+}
+
+.link{
+  color: #A084E8;
 }

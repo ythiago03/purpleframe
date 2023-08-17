@@ -16,13 +16,15 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const loginWithGoogle = async () => {
+  const loginWithGoogle = async (e) => {
+    e.preventDefault();
     const { user } = await signInWithPopup(auth, provider);//logando com popup
     console.log(user);
     navigate('/');//trocando para a home
   };
 
   const loginWithEmailAndPassword = async () => {
+    e.preventDefault();
     const { user } = await signInWithEmailAndPassword(auth, email, password);//logando com email e senha
     console.log(user);
     navigate('/');
@@ -66,8 +68,11 @@ const Login = () => {
             <AiFillGoogleCircle  size={35} color="#A084E8" />
           </button>
 
-          <span>Don&apos;t have a acount?</span>
-          <Link to={'/register'}>Create acount</Link>
+          <div className="no-acount">
+            <span>Don&apos;t have a acount?</span>
+            <Link to={'/register'} className="link">Create acount</Link>
+          </div>
+          
         </form>
       </div>
     </section>
