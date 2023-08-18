@@ -36,7 +36,7 @@
   margin: 1rem 0;
 }
 
-.login-right input{
+.reg-input{
   width: 100%;
   padding: 1.5rem 2.75rem;
   outline: none;
@@ -46,11 +46,11 @@
   font-size: 1rem;
 }
 
-.login-right input:hover{
+.reg-input:hover{
   background-color: #DDE6ED;
 }
 
-.login-right input::placeholder{
+.reg-input::placeholder{
   font-size: .9rem;
   font-weight: 600;
 }
