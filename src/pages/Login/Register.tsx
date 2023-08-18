@@ -13,12 +13,12 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 const Register = () => {
 
   const schema = yup.object().shape({
-    email: yup.string().email().required(),
+    email: yup.string().email().required('Your email is required'),
     password: yup.string().required().min(6).max(20),
     confirmPassword: yup.string().oneOf([yup.ref('password'), null]).required(),
   });
 
-  const {register, handleSubmit } = useForm({
+  const {register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -52,6 +52,7 @@ const Register = () => {
               placeholder="Email" 
               {...register('email')}
             />
+            <span>{errors.email?.message}</span>
           </label>
           <label>
             <span className="icon">
@@ -60,7 +61,7 @@ const Register = () => {
             <input 
               className="reg-input"
               type="password" 
-              placeholder="Your password..." 
+              placeholder="Password" 
               {...register('password')}
             />
           </label>

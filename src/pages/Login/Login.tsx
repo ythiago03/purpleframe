@@ -23,7 +23,7 @@ const Login = () => {
     navigate('/');//trocando para a home
   };
 
-  const loginWithEmailAndPassword = async () => {
+  const loginWithEmailAndPassword = async (e) => {
     e.preventDefault();
     const { user } = await signInWithEmailAndPassword(auth, email, password);//logando com email e senha
     console.log(user);
@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <section className="login">
       <div className="login-left">
-        <h1>Hello, Friend!</h1>
+        <h1>PurpleFrame</h1>
         <p>Enter your personal details and start journey with us</p>
       </div>
 
