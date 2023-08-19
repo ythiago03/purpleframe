@@ -41,7 +41,7 @@ const Register = () => {
 
       <div className="login-right">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h1>Register</h1>
+          <h1>Sign up</h1>
           <label>
             <span className="icon">
               <HiOutlineMail size={25} color="#A084E8" />
