@@ -1,8 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
-import { AiFillGoogleCircle } from 'react-icons/ai';
-const Sidebar = () => {
+import { 
+  AiFillHome, 
+  AiOutlineSearch, 
+  AiOutlinePlus, 
+  AiOutlineUser } from 'react-icons/ai';
+import { auth } from '../../config/firebase';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+
+
+const Sidebar = ({userImg, username}) => {
+
+  const navigate = useNavigate();
+
+  const logOut = async () => {
+    await signOut(auth);
+    navigate('login');
+  };
+
   return (
     <nav className="sidebar">
       <h1 className="logo">PurpleFrame</h1>
@@ -10,30 +27,32 @@ const Sidebar = () => {
       <ul className="side-links">
         <li>
           <Link to={'/'} >
-            <AiFillGoogleCircle  size={35} />
+            <AiFillHome  size={35} />
             Home
           </Link>
         </li>
         <li>
           <Link to={'/'} >
-            <AiFillGoogleCircle  size={35} />
+            <AiOutlineSearch  size={35} />
             Search
           </Link>
         </li>
         <li>
           <Link to={'/createPost'} >
-            <AiFillGoogleCircle  size={35} />
+            <AiOutlinePlus  size={35} />
             New Post
           </Link>
         </li>
         <li>
           <Link to={'/'} >
-            <AiFillGoogleCircle  size={35} />
-            User
+            {userImg == null 
+              ? <AiOutlineUser  size={35} /> 
+              : <img className="userPic" src={userImg} alt="Profile Picture"/>}
+            Profile    
           </Link>
         </li>
       </ul>
-      <span>Log Out</span>
+      <button className="logout" onClick={logOut} >Log Out</button>
     </nav>
   );
 };
