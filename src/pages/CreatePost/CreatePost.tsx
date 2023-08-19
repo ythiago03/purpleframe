@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const CreatePost = () => {
 
   const [user] = useAuthState(auth);
-  const [title, setTitle] = useState('');
+  const [postImg, setPostImg] = useState('');
   const [description, setDescription] = useState('');
 
   const postsRef = collection(db, 'posts');
@@ -16,10 +16,11 @@ const CreatePost = () => {
   const createPost = async (e) => {
     e.preventDefault();
     await addDoc(postsRef ,{
-      title,
       description,
+      postImg,
       userId: user?.uid,
       username: user?.displayName,
+      userImg: user?.photoURL
     });
     navigate('/');
   };
@@ -30,8 +31,8 @@ const CreatePost = () => {
       <form>
         <input 
           type="text" 
-          placeholder="Title" 
-          onChange={e => setTitle(e.target.value)}
+          placeholder="Url Image" 
+          onChange={e => setPostImg(e.target.value)}  
         />
         <textarea 
           name="description" 
