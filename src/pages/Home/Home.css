@@ -1,0 +1,10 @@
+.home{
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.posts{
+  flex: 1;
+  min-width: 500px;
+}
