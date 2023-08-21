@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';//método para logar com um popup e logar com email e senha
+import React, { useEffect, useState } from 'react';
+import { signInWithPopup, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';//método para logar com um popup e logar com email e senha
 import { auth, provider } from '../../config/firebase';
 
 import { useNavigate } from 'react-router-dom';//função para trocar de página web
@@ -17,6 +17,8 @@ import socialImg from '../../assets/socialImg.png';
 import './Login.css';
 
 const Login = () => {
+
+  
 
   const schema = yup.object().shape({
     email: yup.string().email().required('Your email is required'),
@@ -39,6 +41,12 @@ const Login = () => {
     const { user } = await signInWithEmailAndPassword(auth, email, password);//logando com email e senha
     navigate('/');
   };
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if(user) navigate('/');
+    });
+  }, []);
 
   const onSubmit = data => loginWithEmailAndPassword(data); 
 

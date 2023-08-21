@@ -1,0 +1,32 @@
+.profile{
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile-wrapper{
+  margin-left: 300px;
+  flex: 1;
+  min-width: 500px;
+  padding: 1.5rem;
+}
+
+.profile-data{
+  display: flex;
+  gap: 1rem;
+  background-color: rgb(228, 227, 227);
+  padding: 1.75rem;
+  border-radius: 15px;
+}
+
+.profile-data img{
+  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+}
+
+.profile-data h1{
+  font-size: 1.5rem;
+  color: #A084E8;
+}
+

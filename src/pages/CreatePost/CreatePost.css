@@ -1,0 +1,11 @@
+.create-wrapper{
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form{
+  margin-left: 300px;
+  flex: 1;
+  min-width: 500px;
+}

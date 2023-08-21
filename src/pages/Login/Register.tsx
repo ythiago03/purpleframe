@@ -1,5 +1,5 @@
 import React from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';//função para criar user com email e senha
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';//função para criar user com email e senha
 import { auth } from '../../config/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -26,8 +26,9 @@ const Register = () => {
 
   const createAcount = async ({email, password}) => {
     const result = await createUserWithEmailAndPassword(auth, email, password);//criando novo user
+    const { user } = await signInWithEmailAndPassword(auth, email, password);//logando com email e senha
     console.log(result);
-    navigate('/login');
+    navigate(`/editProfile/${user?.uid.slice(0, 6)}`);
   };
 
   const onSubmit = data => createAcount(data);
