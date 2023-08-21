@@ -9,15 +9,17 @@ import {
 import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 const Sidebar = ({userImg, username}) => {
 
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   const logOut = async () => {
     await signOut(auth);
-    navigate('login');
+    navigate('/login');
   };
 
   return (
@@ -44,7 +46,7 @@ const Sidebar = ({userImg, username}) => {
           </Link>
         </li>
         <li>
-          <Link to={'/'} >
+          <Link to={`/profile/${user?.uid.slice(0, 6)}`} >
             {userImg == null 
               ? <AiOutlineUser  size={35} /> 
               : <img className="userPic" src={userImg} alt="Profile Picture"/>}

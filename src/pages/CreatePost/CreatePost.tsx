@@ -4,6 +4,9 @@ import { collection, addDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 
+import './CreatePost.css';
+import Sidebar from '../../components/sidebar/Sidebar';
+
 const CreatePost = () => {
 
   const [user] = useAuthState(auth);
@@ -26,9 +29,10 @@ const CreatePost = () => {
   };
 
   return (
-    <div>
-      Create a new Post
-      <form>
+    <div className="create-wrapper">
+      <Sidebar  userImg={user?.photoURL} username={user?.displayName}  />
+      <form className="form">
+        <h1> Create a new Post</h1>
         <input 
           type="text" 
           placeholder="Url Image" 
