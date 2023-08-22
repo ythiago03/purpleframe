@@ -52,3 +52,21 @@
   border: none;
   text-align: left;
 }
+
+@media screen and  (max-width: 900px){
+  .sidebar{
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .side-links{
+    align-items: center;
+    flex-direction: row;
+  }
+  .side-links a{
+    padding: .5rem 5px;;
+  }
+}

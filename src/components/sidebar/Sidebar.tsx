@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import { 
@@ -21,6 +21,9 @@ const Sidebar = ({userImg, username}) => {
     await signOut(auth);
     navigate('/login');
   };
+
+
+
 
   return (
     <nav className="sidebar">

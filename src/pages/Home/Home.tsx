@@ -33,25 +33,17 @@ const Home = () => {
     <div className="home">
       <Sidebar userImg={user?.photoURL} username={user?.displayName}/>
       <div className="posts">
-        <h1>Welcome {user?.displayName}!</h1>
-        <span>Your is is {user?.uid}</span>
-        <Link to={'/createPost'}>Create a new post</Link>
-
-        <div>
-          {/* <Post key={post.postId} postImg={post.postImg} username={post.username} urlImage={post.urlImg} description={posts.description}/> */}
-      
-          {posts.map(post => {
-            return (
-              <Post 
-                key={post.postId} 
-                postImg={post.postImg} 
-                username={post.username} 
-                urlImg={post.userImg} 
-                description={post.description}
-              />
-            );
-          })}
-        </div>
+        {posts.map(post => {
+          return (
+            <Post 
+              key={post.postId} 
+              postImg={post.postImg} 
+              username={post.username} 
+              urlImg={post.userImg} 
+              description={post.description}
+            />
+          );
+        })}
       </div>
       
     </div>

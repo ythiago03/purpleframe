@@ -5,7 +5,13 @@
 }
 
 .posts{
-  margin-left: 300px;
+  /* margin-left: 220px; */
+  width: 100%;
   flex: 1;
   min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  padding-left: 8rem;
 }
