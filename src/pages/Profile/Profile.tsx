@@ -39,18 +39,19 @@ const Profile = () => {
             <AiFillEdit size={25} color="#A084E8" />
           </Link>
         </div>
-        {posts.map(post => {
-          return (
-            <Post 
-              key={post.postId} 
-              postImg={post.postImg} 
-              username={post.username} 
-              urlImg={post.userImg} 
-              description={post.description}
-            />
-          );
-        })}
-        
+        <div className="posts">
+          {posts.map(post => {
+            return (
+              <Post 
+                key={post.postId} 
+                postImg={post.postImg} 
+                username={post.username} 
+                urlImg={post.userImg} 
+                description={post.description}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
