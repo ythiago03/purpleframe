@@ -1,17 +1,17 @@
-.profile{
+.edit-profile{
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
 }
 
-.profile-wrapper{
+.edit-profile-wrapper{
   margin-left: 300px;
   flex: 1;
   min-width: 500px;
   padding: 1.5rem;
 }
 
-.profile-data{
+.edit-profile-data{
   display: flex;
   gap: 1rem;
   background-color: rgb(228, 227, 227);
@@ -19,13 +19,13 @@
   border-radius: 15px;
 }
 
-.profile-img{
+.edit-profile-img{
   border-radius: 15px;
   width: 100px;
   height: 100px;
 }
 
-.profile-h1{
+.edit-profile-h1{
   font-size: 1.5rem;
   color: #A084E8;
   background-color: transparent;
@@ -34,12 +34,12 @@
   border-bottom: 1px solid #A084E8;
 }
 
-.profile-h1::placeholder{
+.edit-profile-h1::placeholder{
   font-size: 1.5rem;
   color: #A084E8;
 }
 
-.profile-data button {
+.edit-profile-data button {
   background-color: transparent;
   border: none;
   cursor: pointer;

@@ -39,7 +39,7 @@ const Profile = () => {
             <AiFillEdit size={25} color="#A084E8" />
           </Link>
         </div>
-        <div className="posts">
+        <div className="p-posts">
           {posts.map(post => {
             return (
               <Post 
