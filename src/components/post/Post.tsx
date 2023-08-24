@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 import './Post.css';
 
 const Post = ({urlImg, description, username, postImg}) => {
+
+  const [like, setLike] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+
+  const handleLike = () => {
+    setLike(prev => !prev);
+    like 
+      ? setLikeCount(likeCount - 1)
+      : setLikeCount(likeCount + 1);
+  };
+
   return (
     <div className="post">
       <div className="user">
@@ -17,10 +28,13 @@ const Post = ({urlImg, description, username, postImg}) => {
           <img className="post-img" src={postImg} alt="Post Picture" />
         </div>
         <div className="post-settings">
-          <button>
-            <AiOutlineHeart color="#A084E8"  size={35} /> 
+          <button onClick={handleLike}>
+            {like 
+              ? <AiFillHeart color="#A084E8"  size={35} /> 
+              : <AiOutlineHeart color="#A084E8"  size={35} /> 
+            }
           </button>
-          <span>0</span>
+          <span>{likeCount}</span>
         </div>
         <div className="post-description">
           <div className="desc-wrapper">

@@ -26,12 +26,12 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="profile">
+    <div className="edit-profile">
       <Sidebar userImg={user?.photoURL} username={user?.displayName} />
-      <form className="profile-wrapper" onSubmit={atualizaTeste} >
-        <div className="profile-data">
-          <input className="profile-img" type="text" placeholder="Profile Picture" onChange={e => setPhotoURL(e.target.value)} required />
-          <input className="profile-h1" type="text" placeholder={user?.displayName} onChange={e => setDisplayName(e.target.value)} required />
+      <form className="edit-profile-wrapper" onSubmit={atualizaTeste} >
+        <div className="edit-profile-data">
+          <input className="edit-profile-img" type="text" placeholder="Profile Picture" onChange={e => setPhotoURL(e.target.value)} required />
+          <input className="edit-profile-h1" type="text" placeholder={user?.displayName} onChange={e => setDisplayName(e.target.value)} required />
           
           <button onClick={() => navigate(`/profile/${user?.uid.slice(0, 6)}`)}>
             <AiFillCloseCircle size={25} color="#A084E8" />

@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <div className="home">
       <Sidebar userImg={user?.photoURL} username={user?.displayName}/>
-      <div className="posts">
+      <div className="h-posts">
         {posts.map(post => {
           return (
             <Post 
