@@ -5,7 +5,68 @@
 }
 
 .form{
-  margin-left: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
-  min-width: 500px;
+}
+
+.form form{
+  background-color: rgb(228, 227, 227);
+  max-width: 500px;
+  width: 100%;
+  max-height: 700px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25px;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.form h1{
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.form input, textarea{
+  width: 100%;
+  padding: 1.5rem 2.75rem;
+  outline: none;
+  border-radius: 5px;
+  border-bottom: 1px solid #A084E8;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+}
+
+.form input:hover, textarea:hover{
+  background-color: #DDE6ED;
+}
+
+.form input::placeholder, textarea::placeholder{
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.form textarea{
+  resize: vertical;
+  height: 35%;
+}
+
+.newPost-btn{
+  width: 100%;
+  padding: 1rem 2.75rem; 
+  background-color: #A084E8;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+.newPost-btn:hover{
+  background-color: #9074d8;
+  cursor: pointer;
 }

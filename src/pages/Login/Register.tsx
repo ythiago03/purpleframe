@@ -34,13 +34,13 @@ const Register = () => {
   const onSubmit = data => createAcount(data);
  
   return (
-    <section className="login">
-      <div className="login-left">
+    <section className="reg-login">
+      <div className="reg-login-left">
         <h1>Hello, Friend!</h1>
         <p>Enter your personal details and start journey with us</p>
       </div>
 
-      <div className="login-right">
+      <div className="reg-login-right">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Sign up</h1>
           <label>

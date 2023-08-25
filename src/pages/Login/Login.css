@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
+  overflow-x: hidden;
 }
 
 /*  right side */
@@ -113,7 +114,6 @@
 .login-left{
   width: 50%;
   flex: 1;
-  min-width: 415px;
   background-color: #A084E8;
   display: flex;
   justify-content: center;
@@ -138,4 +138,21 @@
 .login-left img{
   width: 80%;
   min-width: 500px;
+}
+
+@media screen and (max-width: 500px) {
+  .login-left img{
+    min-width: 0;
+    width: 100%;
+  }
+  .login-left h1{
+    font-size: 2rem;
+  }
+  .login-left p{
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+  .login-right{
+    min-width: 100%;
+  }
 }
