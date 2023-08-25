@@ -16,7 +16,14 @@ const Profile = () => {
   const [posts, setPosts] = useState([]);
   const [user] = useAuthState(auth);
   const postsRef = collection(db, 'posts');
- 
+  const bgImg = 'https://cutewallpaper.org/21/pixel-wallpaper-gif/gif-Backgrounds-Wallpaper-Cave.gif';
+  const profileStyle = {
+    background: `url(${bgImg})`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  };
+
   const getPosts = async () => {
     const posts =  await getDocs(postsRef);
     setPosts(posts.docs
@@ -32,9 +39,15 @@ const Profile = () => {
     <div className="profile">
       <Sidebar userImg={user?.photoURL} username={user?.displayName} />
       <div className="profile-wrapper">
-        <div className="profile-data">
-          <img src={user?.photoURL} alt="Profile Picture" />
-          <h1>@{user?.displayName}</h1>
+        <div className="profile-data" style={profileStyle}>
+          <img src={user?.photoURL 
+            ? user?.photoURL 
+            : 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'
+          } alt="Profile Picture" />
+          <h1>@{user?.displayName 
+            ? user?.displayName 
+            : 'User'
+          }</h1>
           <Link to={`/editProfile/${user?.uid.slice(0, 6)}`}>
             <AiFillEdit size={25} color="#A084E8" />
           </Link>

@@ -5,18 +5,16 @@
 }
 
 .edit-profile-wrapper{
-  margin-left: 300px;
   flex: 1;
-  min-width: 500px;
-  padding: 1.5rem;
+  width: 100%;
 }
 
 .edit-profile-data{
   display: flex;
   gap: 1rem;
-  background-color: rgb(228, 227, 227);
   padding: 1.75rem;
-  border-radius: 15px;
+  padding-left: 270px;
+  height: 200px;
 }
 
 .edit-profile-img{
@@ -44,4 +42,19 @@
   border: none;
   cursor: pointer;
   height: 50px;
+}
+
+@media screen and (max-width: 1020px) {
+  .edit-profile-data{
+    padding-left: 1rem;
+  }
+  .edit-profile-h1{
+    font-size: 1rem;
+    margin-top: .5rem;
+    width: 150px;
+  }
+  .edit-profile-data a{
+    margin-top: .5rem;
+  }
+  
 }

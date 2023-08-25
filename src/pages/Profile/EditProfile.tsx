@@ -15,6 +15,14 @@ const EditProfile = () => {
   const navigate = useNavigate();
   const [displayName, setDisplayName] = useState('');
   const [photoURL, setPhotoURL] = useState('');
+  const bgImg = 'https://cutewallpaper.org/21/pixel-wallpaper-gif/gif-Backgrounds-Wallpaper-Cave.gif';
+  const profileStyle = {
+    background: `url(${bgImg})`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  };
+
 
   const atualizaTeste = async (e) => {
     e.preventDefault();
@@ -29,7 +37,7 @@ const EditProfile = () => {
     <div className="edit-profile">
       <Sidebar userImg={user?.photoURL} username={user?.displayName} />
       <form className="edit-profile-wrapper" onSubmit={atualizaTeste} >
-        <div className="edit-profile-data">
+        <div className="edit-profile-data" style={profileStyle}>
           <input className="edit-profile-img" type="text" placeholder="Profile Picture" onChange={e => setPhotoURL(e.target.value)} required />
           <input className="edit-profile-h1" type="text" placeholder={user?.displayName} onChange={e => setDisplayName(e.target.value)} required />
           

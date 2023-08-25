@@ -31,21 +31,23 @@ const CreatePost = () => {
   return (
     <div className="create-wrapper">
       <Sidebar  userImg={user?.photoURL} username={user?.displayName}  />
-      <form className="form">
-        <h1> Create a new Post</h1>
-        <input 
-          type="text" 
-          placeholder="Url Image" 
-          onChange={e => setPostImg(e.target.value)}  
-        />
-        <textarea 
-          name="description" 
-          placeholder="Description"
-          onChange={e => setDescription(e.target.value)}
-        > 
-        </textarea>
-        <button onClick={createPost}>Create</button>
-      </form>
+      <div className="form">
+        <form >
+          <h1> Create a new Post</h1>
+          <input 
+            type="text" 
+            placeholder="Add Image" 
+            onChange={e => setPostImg(e.target.value)}  
+          />
+          <textarea 
+            name="description" 
+            placeholder="Description"
+            onChange={e => setDescription(e.target.value)}
+          > 
+          </textarea>
+          <button className="newPost-btn" onClick={createPost}>Create</button>
+        </form>
+      </div>
     </div>
   );
 };

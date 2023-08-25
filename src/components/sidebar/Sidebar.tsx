@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import { 
   AiFillHome, 
-  AiOutlineSearch, 
   AiOutlinePlus, 
   AiOutlineUser } from 'react-icons/ai';
 import { auth } from '../../config/firebase';
@@ -36,12 +35,12 @@ const Sidebar = ({userImg, username}) => {
             Home
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to={'/'} >
             <AiOutlineSearch  size={35} />
             Search
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to={'/createPost'} >
             <AiOutlinePlus  size={35} />
