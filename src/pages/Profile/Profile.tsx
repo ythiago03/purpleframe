@@ -16,13 +16,13 @@ const Profile = () => {
   const [posts, setPosts] = useState([]);
   const [user] = useAuthState(auth);
   const postsRef = collection(db, 'posts');
-  const bgImg = 'https://cutewallpaper.org/21/pixel-wallpaper-gif/gif-Backgrounds-Wallpaper-Cave.gif';
-  const profileStyle = {
-    background: `url(${bgImg})`,
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-  };
+  // const bgImg = 'https://cutewallpaper.org/21/pixel-wallpaper-gif/gif-Backgrounds-Wallpaper-Cave.gif';
+  // const profileStyle = {
+  //   background: `url(${bgImg})`,
+  //   backgroundPosition: 'center',
+  //   backgroundRepeat: 'no-repeat',
+  //   backgroundSize: 'cover',
+  // };
 
   const getPosts = async () => {
     const posts =  await getDocs(postsRef);
@@ -39,7 +39,7 @@ const Profile = () => {
     <div className="profile">
       <Sidebar userImg={user?.photoURL} username={user?.displayName} />
       <div className="profile-wrapper">
-        <div className="profile-data" style={profileStyle}>
+        <div className="profile-data">
           <img src={user?.photoURL 
             ? user?.photoURL 
             : 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'

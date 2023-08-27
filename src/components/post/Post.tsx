@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { doc, deleteDoc } from 'firebase/firestore';
+import { db } from '../../config/firebase';
+
 
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-
+import { BsFillTrash2Fill } from 'react-icons/bs';
 import './Post.css';
 
-const Post = ({urlImg, description, username, postImg}) => {
+const Post = ({urlImg, description, username, postImg, edit = false, id}) => {
 
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -16,11 +19,18 @@ const Post = ({urlImg, description, username, postImg}) => {
       : setLikeCount(likeCount + 1);
   };
 
+  const removePost = async () => {
+    await deleteDoc(doc(db, 'posts', id));
+  };
+
   return (
     <div className="post">
       <div className="user">
         <img className="profile-pic" src={urlImg} alt="Profile Picture" />
         <h1>{username}</h1>
+        {edit && <button className="trash-btn" onClick={removePost} >
+          <BsFillTrash2Fill color="#A084E8"  size={35} />
+        </button>}
       </div>
 
       <div className="post-wrapper">
