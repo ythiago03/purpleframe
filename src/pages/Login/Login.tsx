@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { signInWithPopup, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';//método para logar com um popup e logar com email e senha
+import React, { SyntheticEvent, useEffect } from 'react';
+import { signInWithPopup, signInWithEmailAndPassword, } from 'firebase/auth';//método para logar com um popup e logar com email e senha
 import { auth, provider } from '../../config/firebase';
 
 import { useNavigate } from 'react-router-dom';//função para trocar de página web
@@ -13,32 +13,36 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { FormData } from '../../interfaces/interfaces';
 import socialImg from '../../assets/socialImg.png';
 import './Login.css';
 
+
 const Login = () => {
 
-  
-
+  //validando dados do formulário
   const schema = yup.object().shape({
     email: yup.string().email().required('Your email is required'),
     password: yup.string().required().min(6).max(20),
   });
 
-  const {register, handleSubmit, formState: { errors } } = useForm({
+  const {register, handleSubmit} = useForm({
     resolver: yupResolver(schema),
   });
 
   const navigate = useNavigate();
 
-  const loginWithGoogle = async (e: any) => {
+  //logando com o google
+  const loginWithGoogle = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const { user } = await signInWithPopup(auth, provider);//logando com popup
+    await signInWithPopup(auth, provider);//logando com popup
     navigate('/');//trocando para a home
   };
 
-  const loginWithEmailAndPassword = async ({email, password}) => {
-    const { user } = await signInWithEmailAndPassword(auth, email, password);//logando com email e senha
+  //logando com email e senha
+  const loginWithEmailAndPassword = async ({email, password}: FormData) => {
+    
+    await signInWithEmailAndPassword(auth, email, password);
     navigate('/');
   };
 
@@ -48,7 +52,7 @@ const Login = () => {
     });
   }, []);
 
-  const onSubmit = data => loginWithEmailAndPassword(data); 
+  const onSubmit = (data: FormData) => loginWithEmailAndPassword(data); 
 
   return (
     <section className="login">
