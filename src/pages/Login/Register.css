@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
+  overflow-x: hidden;
 }
 
 /*  right side */
@@ -111,8 +112,8 @@
 
 .reg-login-left{
   width: 50%;
+  height: 100vh;
   flex: 1;
-  min-width: 415px;
   background-color: #A084E8;
   display: flex;
   justify-content: center;
@@ -131,4 +132,19 @@
 .reg-login-left p{
   font-size: 1.5rem;
   font-weight: 400;
+}
+
+/* Media */
+
+@media screen and (max-width: 500px) {
+  .reg-login-left h1{
+    font-size: 2rem;
+  }
+  .reg-login-left p{
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+  .reg-login-right{
+    min-width: 100%;
+  }
 }

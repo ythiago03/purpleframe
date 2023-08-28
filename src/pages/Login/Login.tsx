@@ -54,7 +54,7 @@ const Login = () => {
     <section className="login">
       <div className="login-left">
         <h1>PurpleFrame</h1>
-        <p>Enter your personal details and start journey with us.</p>
+        <p>Sign in to connect, share, and discover with friends and the world.</p>
         <img src={socialImg} alt="Social Media Image" />
       </div>
 

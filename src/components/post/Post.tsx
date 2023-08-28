@@ -20,7 +20,9 @@ const Post = ({urlImg, description, username, postImg, edit = false, id}) => {
   };
 
   const removePost = async () => {
-    await deleteDoc(doc(db, 'posts', id));
+    // await deleteDoc(doc(db, 'posts', id));
+    console.log('excluir:' + id);
+    
   };
 
   return (
