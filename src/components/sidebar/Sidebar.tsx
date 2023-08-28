@@ -9,11 +9,13 @@ import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { set } from 'react-hook-form';
 
 
 const Sidebar = ({userImg, username}) => {
 
   const [user] = useAuthState(auth);
+  const [sidebarHidden, setSidebarHidden] = useState(false);
   const navigate = useNavigate();
 
   const logOut = async () => {
@@ -21,18 +23,26 @@ const Sidebar = ({userImg, username}) => {
     navigate('/login');
   };
 
+  const handleResize = () => {
+    const innerWidht = window.innerWidth;
+    if(innerWidht <= 720){
+      setSidebarHidden(true);
+      return;
+    }
+    setSidebarHidden(false);
+  };
 
-
+  window.addEventListener('resize' , handleResize);
 
   return (
     <nav className="sidebar">
-      <h1 className="logo">PurpleFrame</h1>
+      <h1 className="logo">{!sidebarHidden && 'PurpleFrame'}</h1>
       
       <ul className="side-links">
         <li>
           <Link to={'/'} >
             <AiFillHome  size={35} />
-            Home
+            {!sidebarHidden && 'Home'}
           </Link>
         </li>
         {/* <li>
@@ -44,7 +54,7 @@ const Sidebar = ({userImg, username}) => {
         <li>
           <Link to={'/createPost'} >
             <AiOutlinePlus  size={35} />
-            New Post
+            {!sidebarHidden && 'New Post'}
           </Link>
         </li>
         <li>
@@ -52,7 +62,7 @@ const Sidebar = ({userImg, username}) => {
             {userImg == null 
               ? <AiOutlineUser  size={35} /> 
               : <img className="userPic" src={userImg} alt="Profile Picture"/>}
-            Profile    
+            {!sidebarHidden && 'Profile'}
           </Link>
         </li>
       </ul>
