@@ -16,6 +16,7 @@ export interface FormData {
 
 
 export interface Post {
+  userId: string;
   postId: string;
   postImg: string;
   username: string;
