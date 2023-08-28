@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { auth, db } from '../../config/firebase';
 import { updateProfile } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -10,11 +10,12 @@ import { collection, getDocs } from 'firebase/firestore';
 
 import {AiFillCloseCircle, AiFillCheckCircle} from 'react-icons/ai';
 import './EditProfile.css';
+import { Post as PostInterface, User } from '../../interfaces/interfaces';
 
 const EditProfile = () => {
   
   const [user] = useAuthState(auth);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostInterface[] | null>(null);
   const postsRef = collection(db, 'posts');
   const navigate = useNavigate();
   const [displayName, setDisplayName] = useState('');
@@ -29,16 +30,16 @@ const EditProfile = () => {
 
   const getPosts = async () => {
     const posts =  await getDocs(postsRef);
-    setPosts(posts.docs
+    setPosts(posts?.docs
       .map(doc => ({...doc.data(), postId: doc.id,}))
-      .filter(post => (post.userId == user?.uid)));
+      .filter(post => (post.userId == user?.uid)) as PostInterface[]);
   };
 
   useEffect(() => {
     getPosts();
   }, [posts]);
 
-  const atualizaTeste = async (e) => {
+  const atualizaTeste = async (e: SyntheticEvent) => {
     e.preventDefault();
     await updateProfile(auth.currentUser, {
       displayName,
@@ -65,7 +66,7 @@ const EditProfile = () => {
           </div>
         </form>
         <div className="p-posts">
-          {posts.map(post => {
+          {posts?.map(post => {
             return (
               <Post 
                 key={post.postId} 

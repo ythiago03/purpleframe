@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import { db, auth } from '../../config/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -16,7 +16,7 @@ const CreatePost = () => {
   const postsRef = collection(db, 'posts');
   const navigate = useNavigate();
 
-  const createPost = async (e) => {
+  const createPost = async (e: SyntheticEvent) => {
     e.preventDefault();
     await addDoc(postsRef ,{
       description,

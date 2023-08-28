@@ -7,7 +7,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { BsFillTrash2Fill } from 'react-icons/bs';
 import './Post.css';
 
-const Post = ({urlImg, description, username, postImg, edit = false, id}) => {
+const Post = ({urlImg, description, username, postImg, edit = false, id = ''}) => {
 
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);

@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react';
 
 import { auth, db } from '../../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { getAuth, updateProfile } from 'firebase/auth';
+import { collection, getDocs } from 'firebase/firestore';
+
 import { Link } from 'react-router-dom';
-import Sidebar from '../../components/sidebar/Sidebar';
 
 import {AiFillEdit} from 'react-icons/ai';
-import './Profile.css';
-import { collection, getDocs } from 'firebase/firestore';
+
+import Sidebar from '../../components/sidebar/Sidebar';
+
 import Post from '../../components/post/Post';
+import './Profile.css';
+import { Post as PostInterface} from '../../interfaces/interfaces';
 
 const Profile = () => {
 
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostInterface[] | null>(null);
   const [user] = useAuthState(auth);
   const postsRef = collection(db, 'posts');
   // const bgImg = 'https://cutewallpaper.org/21/pixel-wallpaper-gif/gif-Backgrounds-Wallpaper-Cave.gif';
@@ -26,9 +29,9 @@ const Profile = () => {
 
   const getPosts = async () => {
     const posts =  await getDocs(postsRef);
-    setPosts(posts.docs
+    setPosts(posts?.docs
       .map(doc => ({...doc.data(), postId: doc.id,}))
-      .filter(post => (post.userId == user?.uid)));
+      .filter((post) => (post.userId == user?.uid)) as PostInterface[]);
   };
 
   useEffect(() => {
@@ -53,7 +56,7 @@ const Profile = () => {
           </Link>
         </div>
         <div className="p-posts">
-          {posts.map(post => {
+          {posts?.map((post: PostInterface) => {
             return (
               <Post 
                 key={post.postId} 

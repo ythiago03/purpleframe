@@ -1,37 +1,42 @@
 import React from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';//função para criar user com email e senha
 import { auth } from '../../config/firebase';
+
 import { Link, useNavigate } from 'react-router-dom';
+
+import { HiOutlineMail } from 'react-icons/hi';
+import { RiLockPasswordLine } from 'react-icons/ri';
+
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import './Register.css';
-import { HiOutlineMail } from 'react-icons/hi';
-import { RiLockPasswordLine } from 'react-icons/ri';
+import { FormData } from '../../interfaces/interfaces';
 
 const Register = () => {
 
+  // validando formulário
   const schema = yup.object().shape({
     email: yup.string().email().required('Your email is required'),
     password: yup.string().required().min(6).max(20),
-    confirmPassword: yup.string().oneOf([yup.ref('password'), null]).required(),
+    confirmPassword: yup.string().oneOf([yup.ref('password')]).required(),
   });
 
-  const {register, handleSubmit, formState: { errors } } = useForm({
+  const {register, handleSubmit} = useForm({
     resolver: yupResolver(schema),
   });
 
   const navigate = useNavigate();
 
-  const createAcount = async ({email, password}) => {
-    const result = await createUserWithEmailAndPassword(auth, email, password);//criando novo user
+  //criando usuário
+  const createAcount = async ({email, password}: FormData) => {
+    await createUserWithEmailAndPassword(auth, email, password);//criando novo user
     const { user } = await signInWithEmailAndPassword(auth, email, password);//logando com email e senha
-    console.log(result);
     navigate(`/editProfile/${user?.uid.slice(0, 6)}`);
   };
 
-  const onSubmit = data => createAcount(data);
+  const onSubmit = (data: FormData) => createAcount(data);
  
   return (
     <section className="reg-login">
@@ -53,7 +58,7 @@ const Register = () => {
               placeholder="Email" 
               {...register('email')}
             />
-            <span>{errors.email?.message}</span>
+            {/* <span>{errors.email?.message}</span> */}
           </label>
           <label>
             <span className="icon">
