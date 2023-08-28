@@ -2,26 +2,26 @@ import React, { useEffect, useState } from 'react';
 //Firebase imports
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../../config/firebase';
-import { getDocs, collection, orderBy} from 'firebase/firestore';
+import { getDocs, collection} from 'firebase/firestore';
 //Router-DOM imports
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 //Local imports
 import Sidebar from '../../components/sidebar/Sidebar';
 import './Home.css';
 import Post from '../../components/post/Post';
+import { Post as PostInterface } from '../../interfaces/interfaces';
 
 const Home = () => {
-  //PurpleFrame
+ 
   const [user] = useAuthState(auth);//recebe os dados de usuário atual
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostInterface[] | null>(null);
 
   const postsRef = collection(db, 'posts');
   const navigate = useNavigate();
   
   const getPosts = async () => {
     const posts =  await getDocs(postsRef);
-    setPosts(posts.docs.map(doc => ({...doc.data(), postId: doc.id,})));
+    setPosts(posts.docs.map(doc => ({...doc.data(), postId: doc.id,})) as PostInterface[]);
   };
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Home = () => {
     <div className="home">
       <Sidebar userImg={user?.photoURL} username={user?.displayName}/>
       <div className="h-posts">
-        {posts.map(post => {
+        {posts?.map((post: PostInterface) => {
           return (
             <Post 
               key={post.postId} 

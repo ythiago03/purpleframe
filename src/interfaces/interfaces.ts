@@ -13,3 +13,12 @@ export interface FormData {
   password: string;
   confirmPassword?: string;
 }
+
+
+export interface Post {
+  postId: string;
+  postImg: string;
+  username: string;
+  userImg: string;
+  description: string;
+}
