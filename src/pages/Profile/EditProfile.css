@@ -9,12 +9,17 @@
   width: 100%;
 }
 
+.edit-container{
+  width: 100%;
+}
+
 .edit-profile-data{
   display: flex;
   gap: 1rem;
   padding: 1.75rem;
   padding-left: 270px;
   height: 200px;
+  background-color: rgb(228, 227, 227);
 }
 
 .edit-profile-img{

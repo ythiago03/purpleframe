@@ -9,6 +9,7 @@
 
 .user{
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.75rem;
@@ -24,6 +25,14 @@
 .user h1{
   font-size: 1rem;
   font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+}
+
+.trash-btn{
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-end;
   cursor: pointer;
 }
 

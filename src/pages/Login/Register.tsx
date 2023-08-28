@@ -36,8 +36,8 @@ const Register = () => {
   return (
     <section className="reg-login">
       <div className="reg-login-left">
-        <h1>Hello, Friend!</h1>
-        <p>Enter your personal details and start journey with us</p>
+        <h1>Welcome to Our Social Network!</h1>
+        <p>Enter your personal details and start journey with us.</p>
       </div>
 
       <div className="reg-login-right">
@@ -78,7 +78,7 @@ const Register = () => {
             />
           </label>
           
-          <input className="login-btn" type="submit"/>
+          <input className="login-btn" type="submit" value="Sign Up"/>
           <div className="no-acount">
             <Link to={'/login'} className="link">Back to Login Page.</Link>
           </div>
