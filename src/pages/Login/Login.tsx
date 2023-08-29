@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect } from 'react';
+import { SyntheticEvent, useEffect } from 'react';
 import { signInWithPopup, signInWithEmailAndPassword, } from 'firebase/auth';//método para logar com um popup e logar com email e senha
 import { auth, provider } from '../../config/firebase';
 
