@@ -32,7 +32,7 @@ const EditProfile = () => {
     const posts =  await getDocs(postsRef);
     setPosts(posts?.docs
       .map(doc => ({...doc.data(), postId: doc.id,}))
-      .filter(post => (post.userId == user?.uid)) as PostInterface[]);
+      .filter(({userId}: PostInterface) => (userId == user?.uid)) as PostInterface[]);
   };
 
   useEffect(() => {
