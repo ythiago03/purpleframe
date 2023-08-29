@@ -39,7 +39,7 @@ const Home = () => {
               key={post.postId} 
               postImg={post.postImg} 
               username={post.username} 
-              urlImg={post.userImg} 
+              urlImg={post.userImg!} 
               description={post.description}
             />
           );
