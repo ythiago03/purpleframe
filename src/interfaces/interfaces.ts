@@ -21,7 +21,7 @@ export interface Post {
   userImg?: string|null|undefined;
   username?: string|null|undefined;
   postId?: string;
-  urlImg?: string|null|undefined;
+  urlImg?: string|undefined;
   edit?: boolean;
   id?: string;
 }
