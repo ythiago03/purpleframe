@@ -15,13 +15,13 @@ export interface FormData {
 }
 
 export interface Post {
-  description: string;
-  postImg: string;
-  userId: string;
-  userImg: string;
-  username: string;
-  postId: string;
-  urlImg: string;
-  edit: boolean;
-  id: string;
+  description?: string;
+  postImg?: string;
+  userId?: string;
+  userImg?: string|null|undefined;
+  username?: string|null|undefined;
+  postId?: string;
+  urlImg?: string|null|undefined;
+  edit?: boolean;
+  id?: string;
 }
