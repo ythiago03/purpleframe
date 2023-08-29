@@ -1,4 +1,3 @@
-import React from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';//função para criar user com email e senha
 import { auth } from '../../config/firebase';
 

@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { auth, db } from '../../config/firebase';
 import { updateProfile } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
