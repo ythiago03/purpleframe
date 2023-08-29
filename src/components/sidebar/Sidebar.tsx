@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import { 
@@ -9,10 +9,9 @@ import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { set } from 'react-hook-form';
+import { Post } from '../../interfaces/interfaces';
 
-
-const Sidebar = ({userImg, username}) => {
+const Sidebar = ({userImg}: Post) => {
 
   const [user] = useAuthState(auth);
   const [sidebarHidden, setSidebarHidden] = useState(false);

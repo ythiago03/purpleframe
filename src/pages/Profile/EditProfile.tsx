@@ -10,7 +10,7 @@ import { collection, getDocs } from 'firebase/firestore';
 
 import {AiFillCloseCircle, AiFillCheckCircle} from 'react-icons/ai';
 import './EditProfile.css';
-import { Post as PostInterface, User } from '../../interfaces/interfaces';
+import { Post as PostInterface } from '../../interfaces/interfaces';
 
 const EditProfile = () => {
   
@@ -41,10 +41,12 @@ const EditProfile = () => {
 
   const atualizaTeste = async (e: SyntheticEvent) => {
     e.preventDefault();
-    await updateProfile(auth.currentUser, {
-      displayName,
-      photoURL,
-    });
+    if (auth.currentUser){
+      await updateProfile(auth.currentUser, {
+        displayName,
+        photoURL,
+      });
+    }
     navigate(`/profile/${user?.uid.slice(0, 6)}`);
   };
 
@@ -55,7 +57,7 @@ const EditProfile = () => {
         <form className="edit-profile-wrapper" onSubmit={atualizaTeste} >
           <div className="edit-profile-data" >
             <input className="edit-profile-img" type="text" placeholder="Profile Picture" onChange={e => setPhotoURL(e.target.value)} required />
-            <input className="edit-profile-h1" type="text" placeholder={user?.displayName} onChange={e => setDisplayName(e.target.value)} required />
+            <input className="edit-profile-h1" type="text" placeholder={user?.displayName ? user?.displayName : ''} onChange={e => setDisplayName(e.target.value)} required />
           
             <button onClick={() => navigate(`/profile/${user?.uid.slice(0, 6)}`)}>
               <AiFillCloseCircle size={25} color="#A084E8" />

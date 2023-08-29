@@ -14,12 +14,14 @@ export interface FormData {
   confirmPassword?: string;
 }
 
-
 export interface Post {
-  userId: string;
-  postId: string;
-  postImg: string;
-  username: string;
-  userImg: string;
   description: string;
+  postImg: string;
+  userId: string;
+  userImg: string;
+  username: string;
+  postId: string;
+  urlImg: string;
+  edit: boolean;
+  id: string;
 }
