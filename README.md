@@ -2,7 +2,7 @@
 
 <p align="center"> Rede social. </p>
 
-<img src="https://user-images.githubusercontent.com/" alt="Capa do projeto">
+![Capa do projeto](./src/assets/purpleframe.png)
 
 <p align="center">
     <a href="#sobre">sobre</a> •
