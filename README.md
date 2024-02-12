@@ -1,6 +1,6 @@
 <h1 align="center"> PurpleFrame </h1>
 
-<p align="center"> Rede social. </p>
+<p align="center"> Rede social utilizando React e Firebase. </p>
 
 ![Capa do projeto](./src/assets/purpleframe.png)
 
